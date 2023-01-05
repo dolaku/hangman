@@ -13,12 +13,27 @@
     <section id="game-area">
         <h1 class="mb-3">Hangman Game</h1>
     
-        <form>
-            <label for="user-input">Enter a letter</label>
-            <input type="text" name="user-input" id="user-input" placeholder="Enter your guess. . .">
-            <button type="submit" id="submit">Guess!</button>
-        </form>
+        <div class="grid-2">
+            <form>
+                <label for="user-input">Enter a letter</label>
+                <input type="text" name="user-input" id="user-input" placeholder="Enter your guess. . ." maxlength="1">
+                <button type="submit" id="submit">Guess!</button>
+            </form>
+    
+            <div id="guess-container" class="grid-2">
+                <div>
+                    <h2>Correct Letters</h2>
+                    <div class="guess-bank" data-type="correct"></div>
+                </div>
+                <div>
+                    <h2>Incorrect Letters</h2>
+                    <div class="guess-bank" data-type="incorrect"></div>
+                </div>
+            </div>
+        </div>
 
     </section>
 </body>
+
+    <script src="app.js"></script>
 </html>
