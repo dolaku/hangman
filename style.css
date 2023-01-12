@@ -60,14 +60,26 @@ label {
 }
 
 #guess-container {
-    background-color: rgb(48, 63, 81);
+    background-color: #303f51;
     padding: 10px;
 }
 
 .guess-bank {
     background-color: #ffffffd8;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 5px;
+    justify-content: center;
     min-height: 1rem;
     padding: 10px;
+}
+
+.guess-bank .card {
+    border: 1px solid #303f51;
+    border-radius: 5px;
+    color: #303f51;
+    padding: 5px;
+    text-transform: uppercase;
 }
 
 #user-input {
