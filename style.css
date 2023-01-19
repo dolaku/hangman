@@ -29,6 +29,7 @@ h1 {
 }
 
 label {
+    display: inline-block;
     font-size: 1.5rem;
 }
 
@@ -55,8 +56,8 @@ label {
 .grid-2 {
     align-items: start;
     display: grid;
-    grid-template-columns: 1fr 1fr;
-    grid-gap: 5px;
+    grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+    grid-gap: 10px;
 }
 
 #guess-container {
@@ -80,6 +81,7 @@ label {
     color: #303f51;
     padding: 5px;
     text-transform: uppercase;
+    user-select: none;
 }
 
 #user-input {
@@ -88,4 +90,17 @@ label {
     font-size: 1.5rem;
     margin: 1rem auto;
     padding: 5px;
+}
+
+#word {
+    align-items: center;
+    border-radius: 5px;
+    font-size: 3rem;
+    height: 100px;
+}
+
+#word .card {
+    background-color: #303f51;
+    min-width: 2rem;
+    min-height: 3rem;
 }

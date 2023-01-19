@@ -12,6 +12,7 @@
 <body>
     <section id="game-area">
         <h1 class="mb-3">Hangman Game</h1>
+        <div id="word" class="guess-bank mb-3"></div>
     
         <div class="grid-2">
             <form>
@@ -25,13 +26,9 @@
                 <button type="submit" id="submit">Guess!</button>
             </form>
     
-            <div id="guess-container" class="grid-2">
+            <div id="guess-container">
                 <div>
-                    <h2>Correct Letters</h2>
-                    <div class="guess-bank" data-type="correct"></div>
-                </div>
-                <div>
-                    <h2>Incorrect Letters</h2>
+                    <label class="mb-1">Incorrect Letters</label>
                     <div class="guess-bank" data-type="incorrect"></div>
                 </div>
             </div>

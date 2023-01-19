@@ -1,19 +1,34 @@
 // wait for page to load before running code
 document.addEventListener("DOMContentLoaded", () => {
-    
+
     const userInput = document.getElementById("user-input");
     const submitButton = document.getElementById("submit");
-    const guessBankCorrect = document.querySelector(".guess-bank[data-type=correct]");
     const guessBankIncorrect = document.querySelector(".guess-bank[data-type=incorrect]");
     let guessedList = new Array;
 
     // TODO 
     // create word bank
+    const wordBank = [
+        "apple",
+        "orange",
+        "banana",
+        "melon"
+    ]
+
     // show a word to guess
+    const word = document.getElementById("word");
+    // -- pick random word
+    let randomIndex = Math.floor(Math.random() * wordBank.length);
+    let randomWord = wordBank[randomIndex].toUpperCase();
+    // -- show characters as blank cards
+    let blankCards = "";
+    for (let i = 0; i < randomWord.length; i++) {
+        blankCards += `<p class="card"></p>`;
+    }
+    word.innerHTML = blankCards;
+
     // show correct guesses
     // show man hanging progression
-
-
 
 
 
