@@ -101,6 +101,7 @@ label {
 
 #word .card {
     background-color: #303f51;
+    color:#f0eeaa;
     min-width: 2rem;
     min-height: 3rem;
 }
