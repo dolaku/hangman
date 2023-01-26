@@ -37,7 +37,6 @@ document.addEventListener("DOMContentLoaded", () => {
         event.stopPropagation();
         
         handleGuess();
-        handleWinLose();
 
         // remove letter after guessing && focus on userInput
         userInput.value = "";
@@ -65,6 +64,8 @@ document.addEventListener("DOMContentLoaded", () => {
                         // update correct letters
                         if (randomWord[i] === guessedLetter) {
                             letter.innerText = guessedLetter;
+
+                            handleWinLose();
                         }
                     }
                 })
@@ -81,15 +82,12 @@ document.addEventListener("DOMContentLoaded", () => {
     }
 
     function handleWinLose() {
-        let hasBlank = false;
-        Array.from(word.children).forEach(letter => {
-            if(!letter.innerText) {
-                hasBlank = true;
-                console.log(hasBlank);
-            }
-        })
+        let hasBlank = Array.from(word.children).some(letter => !letter.innerText);
 
-        
+        if (!hasBlank) {
+            console.log("You WIN!!");
+            
+        }
     }
     
 });
