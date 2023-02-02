@@ -14,21 +14,12 @@ document.addEventListener("DOMContentLoaded", () => {
         "melon"
     ]
 
+
+
     // show a word to guess
     const word = document.getElementById("word");
-    // -- pick random word
-    let randomIndex = Math.floor(Math.random() * wordBank.length);
-    let randomWord = wordBank[randomIndex].toUpperCase();
-    // -- show characters as blank cards
-    let blankCards = "";
-    for (let i = 0; i < randomWord.length; i++) {
-        blankCards += `<p class="card"></p>`;
-    }
-    word.innerHTML = blankCards;
-
-    // show man hanging progression
-
-
+    let randomWord = newWord();
+    word.innerHTML = newWordDisplay();
 
     
     submitButton.addEventListener("click", (event) => {
@@ -43,6 +34,21 @@ document.addEventListener("DOMContentLoaded", () => {
         userInput.focus();
         
     })
+
+    function newWord() {
+        // -- pick random word
+        let randomIndex = Math.floor(Math.random() * wordBank.length);
+        return wordBank[randomIndex].toUpperCase();
+    }
+
+    function newWordDisplay() {
+        // -- show characters as blank cards
+        let blankCards = "";
+        for (let i = 0; i < randomWord.length; i++) {
+            blankCards += `<p class="card"></p>`;
+        }
+        return blankCards;
+    }
 
     function handleGuess() {
     
@@ -78,6 +84,8 @@ document.addEventListener("DOMContentLoaded", () => {
                 guessBankIncorrect.innerHTML += `<p class="card">${guessedList[guessedList.length - 1]}</p>`;
     
             }
+
+            updateHangman();
         }
     }
 
@@ -85,9 +93,35 @@ document.addEventListener("DOMContentLoaded", () => {
         let hasBlank = Array.from(word.children).some(letter => !letter.innerText);
 
         if (!hasBlank) {
-            console.log("You WIN!!");
+
+            // TODO reset the random word
+            randomWord = newWord();
+            word.innerHTML = newWordDisplay();
+
+            // remove all incorrect letters
+            guessedList = new Array;
+            guessBankIncorrect.innerHTML = "";
+
+            // update win streak
+            const winStreak = document.getElementById("win-streak");
+            winStreak.innerText = parseInt(winStreak.innerText) + 1;
             
+
+            // remove hangman progression
         }
+    }
+
+    function updateHangman() {
+        
+    // show man hanging progression
+        //left leg
+        //right leg
+        //body
+        //left arm
+        //right arm
+        //head
+
+
     }
     
 });
