@@ -5,6 +5,8 @@ document.addEventListener("DOMContentLoaded", () => {
     const submitButton = document.getElementById("submit");
     const guessBankIncorrect = document.querySelector(".guess-bank[data-type=incorrect]");
     let guessedList = new Array;
+    let hangmanProgress = 0;
+    const hanger = document.getElementById("hanger");
 
     // create word bank
     const wordBank = [
@@ -12,7 +14,7 @@ document.addEventListener("DOMContentLoaded", () => {
         "orange",
         "banana",
         "melon"
-    ]
+    ];
 
 
 
@@ -71,7 +73,7 @@ document.addEventListener("DOMContentLoaded", () => {
                         if (randomWord[i] === guessedLetter) {
                             letter.innerText = guessedLetter;
 
-                            handleWinLose();
+                            handleWin();
                         }
                     }
                 })
@@ -83,35 +85,20 @@ document.addEventListener("DOMContentLoaded", () => {
                 // loop through list to display guessed letters
                 guessBankIncorrect.innerHTML += `<p class="card">${guessedList[guessedList.length - 1]}</p>`;
     
+                handleLose();
             }
-
-            updateHangman();
         }
     }
 
-    function handleWinLose() {
+    function handleWin() {
         let hasBlank = Array.from(word.children).some(letter => !letter.innerText);
 
         if (!hasBlank) {
-
-            // TODO reset the random word
-            randomWord = newWord();
-            word.innerHTML = newWordDisplay();
-
-            // remove all incorrect letters
-            guessedList = new Array;
-            guessBankIncorrect.innerHTML = "";
-
-            // update win streak
-            const winStreak = document.getElementById("win-streak");
-            winStreak.innerText = parseInt(winStreak.innerText) + 1;
-            
-
-            // remove hangman progression
+            resetGame(true);
         }
     }
 
-    function updateHangman() {
+    function handleLose() {
         
     // show man hanging progression
         //left leg
@@ -121,7 +108,41 @@ document.addEventListener("DOMContentLoaded", () => {
         //right arm
         //head
 
+        // check progression
+        if (hangmanProgress > 4) {
+            // lose
+            hanger.innerHTML = "YOU LOSE!";
+            resetGame(false);
 
+        } else {
+            // update hangman
+            hangmanProgress += 1;
+            hanger.innerHTML = hangmanProgress;
+
+        }
     }
     
+    function resetGame(isWin) {
+
+            // reset the random word
+            randomWord = newWord();
+            word.innerHTML = newWordDisplay();
+
+            // remove all incorrect letters
+            guessedList = new Array;
+            guessBankIncorrect.innerHTML = "";
+
+            // update win streak
+            const winStreak = document.getElementById("win-streak");
+            if (isWin) {
+                winStreak.innerText = parseInt(winStreak.innerText) + 1;
+            } else {
+                winStreak.innerText = 0;
+            }
+
+            // remove hangman progression
+            hangmanProgress = 0;
+            hanger.innerHTML = hangmanProgress;
+    }
+
 });
