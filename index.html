@@ -11,10 +11,21 @@
 </head>
 <body>
     <section id="game-area">
-        <h1 class="mb-1">Hangman Game</h1>
-        <h2 class="mb-3">Win Streak: <span id="win-streak">0</span></h2>
-
-        <div id="hanger" class="mb-3"></div>
+        <header id="header">
+            <div>
+                <h1 class="mb-1">Hangman Game</h1>
+                <h2 class="mb-3">Win Streak: <span id="win-streak">0</span></h2>
+            </div>
+            <div id="hanger" class="mb-3">
+                <div class="overlay-0"></div>
+                <div class="overlay-1"></div>
+                <div class="overlay-2"></div>
+                <div class="overlay-3"></div>
+                <div class="overlay-4"></div>
+                <div class="overlay-5"></div>
+                <img src="./assets/man.png" alt="Hangman progress">
+            </div>
+        </header>
 
         <div id="word" class="guess-bank mb-3"></div>
     

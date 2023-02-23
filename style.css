@@ -4,7 +4,7 @@
 }
 
 body {
-    background-color: rgb(42, 42, 59);
+    background-color: #2a2a3b;
 
 }
 
@@ -32,9 +32,18 @@ h2 {
     font-size: 2rem;
 }
 
+img {
+    object-fit: cover;
+    width: 100%;
+}
+
 label {
     display: inline-block;
     font-size: 1.5rem;
+}
+
+.d-none {
+    display: none;
 }
 
 .mb-1 {
@@ -86,6 +95,76 @@ label {
     padding: 5px;
     text-transform: uppercase;
     user-select: none;
+}
+
+#hanger {
+    max-width: 200px;
+    position: relative;
+}
+
+#header {
+    align-items: center;
+    display: flex;
+    justify-content: space-between;
+}
+
+div[class*="overlay"] {
+    background-color: #2a2a3b;
+    /* background-color: #7bafef7a; */
+    position: absolute;
+}
+
+div.overlay-0 {
+    border-radius: 10px;
+    height: 30px;
+    width: 30px;
+    left: 54%;
+    top: 25%;
+}
+
+div.overlay-1 {
+    border-radius: 10px;
+    height: 44px;
+    width: 6px;
+    left: 61.2%;
+    top: 44%;
+    transform: rotate(-2deg);
+}
+
+div.overlay-2 {
+    border-radius: 10px;
+    height: 39px;
+    width: 7px;
+    left: 50.6%;
+    top: 36.7%;
+    transform: rotate(109deg);
+}
+
+div.overlay-3 {
+    border-radius: 10px;
+    height: 27px;
+    width: 6px;
+    left: 67%;
+    top: 39.4%;
+    transform: rotate(50deg);
+}
+
+div.overlay-4 {
+    border-radius: 10px;
+    height: 27px;
+    width: 6px;
+    left: 56.2%;
+    top: 67.4%;
+    transform: rotate(59deg);
+}
+
+div.overlay-5 {
+    border-radius: 0px;
+    height: 27px;
+    width: 13px;
+    left: 66.4%;
+    top: 67.5%;
+    transform: rotate(-51deg);
 }
 
 #user-input {
