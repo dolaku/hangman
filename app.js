@@ -37,6 +37,16 @@ document.addEventListener("DOMContentLoaded", () => {
         
     })
 
+    // only allow letters A-Z
+    userInput.addEventListener("keyup", (event) => {
+        const letterRegex = /^[A-Z]$/;
+        if (letterRegex.test(event.key.toUpperCase())) {
+            userInput.value = event.key.toUpperCase();
+        } else {
+            userInput.value = "";
+        }
+    })
+
     function newWord() {
         // -- pick random word
         let randomIndex = Math.floor(Math.random() * wordBank.length);
@@ -53,13 +63,12 @@ document.addEventListener("DOMContentLoaded", () => {
     }
 
     function handleGuess() {
-    
+
         // get user's guess
         let guessedLetter = userInput.value.toUpperCase();
         
         // validate not empty
         // only add unique letters -- no duplicates
-        // TODO only allow letters -- no special characters or numbers
         if (guessedLetter && !guessedList.includes(guessedLetter)) {
             
             // handle guesses
@@ -138,9 +147,27 @@ document.addEventListener("DOMContentLoaded", () => {
                 winStreak.innerText = 0;
             }
 
-            // remove hangman progression TODO
+            // reset
             hangmanProgress = 0;
-            hanger.innerHTML = hangmanProgress;
+            
+            // remove hangman progression
+            Array.from(hanger.querySelectorAll("div")).forEach(overlay => overlay.classList.remove("d-none"));
+
+            modal(isWin);
+    }
+
+    function modal(isWin) {
+        const gameArea = document.getElementById("game-area");
+        const div = document.createElement("div");
+        div.id = "modal";
+        div.innerHTML = isWin ? "You win!" : "You lose!";
+
+        gameArea.insertAdjacentElement("beforeend", div);
+
+        // remove after some time
+        setTimeout(() => {
+            div.remove();
+        }, 1500)
     }
 
 });

@@ -63,6 +63,7 @@ label {
     margin: 0 auto;
     max-width: 800px;
     padding: 2rem;
+    position: relative;
     text-align: center;
 }
 
@@ -165,6 +166,22 @@ div.overlay-5 {
     left: 66.4%;
     top: 67.5%;
     transform: rotate(-51deg);
+}
+
+#modal {
+    align-items: center;
+    background: #222222ee;
+    border-radius: 30px;
+    display: flex;
+    font-size: 7rem;
+    justify-content: center;
+    padding: 50px;
+    transform: translateX(-50%);
+    position: absolute;
+    left: 50%;
+    top: 32%;
+    height: 27vh;
+    width: 60vw;
 }
 
 #user-input {
